@@ -2,8 +2,8 @@ from pipeline.model_pipeline import run_training_pipeline
 from sklearn.model_selection import GridSearchCV, StratifiedKFold
 import pandas as pd
 
-def build_model(param_grid, skf):
-    df, pipeline = run_training_pipeline()
+def build_model(param_grid, skf, config_file_name):
+    df, pipeline = run_training_pipeline(config_file_name)
 
     X = df.drop('Churn', axis=1)
     y = df['Churn']
