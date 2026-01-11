@@ -4,6 +4,7 @@ import yaml
 import mlflow
 import joblib
 import os
+import pandas as pd
 from datetime import datetime
 from config import MODEL_DIR, EXP_CONFIG_DIR, PROCESSED_DATA_PATH
 
@@ -52,7 +53,7 @@ def start_experiment(config_file_name):
             mlflow.set_tag(key, value)
         mlflow.set_tag("data_last_modified", data_version)
 
-        grid = build_model(param_grid, skf)
+        grid = build_model(param_grid, skf, config_file_name)
         
         joblib.dump(grid.best_estimator_, model_path)
 
