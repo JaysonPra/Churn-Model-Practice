@@ -4,7 +4,7 @@ import yaml
 import mlflow
 import joblib
 import os
-import pandas as pd
+import argparse
 from datetime import datetime
 from config import MODEL_DIR, EXP_CONFIG_DIR, PROCESSED_DATA_PATH
 
@@ -64,4 +64,14 @@ def start_experiment(config_file_name):
         print(f"Best parameters: {grid.best_params_}")
 
 if __name__ == "__main__":
-    start_experiment("xgboost_added_v1.yaml")
+    parser = argparse.ArgumentParser(description="Run ML Churn Experiment")
+
+    parser.add_argument(
+        "config",
+        type=str,
+        help="The name of the YAML file in the configs directory"
+    )
+
+    args = parser.parse_args()
+
+    start_experiment(args.config)
