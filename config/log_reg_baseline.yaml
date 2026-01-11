@@ -1,0 +1,14 @@
+experiment:
+  name: "Churn_Prediction"
+  run_name: "LogReg_C_Search_v1"
+  tags:
+    model_type: "LogisticRegression"
+    feature_set: "baseline_numeric_categorical"
+  
+cv_settings:
+  n_splits: 5
+  random_state: 42
+  
+hyperparameters:
+  classifier__C: [0.01, 0.1, 1, 10, 100]
+  classifier__solver: ['lbfgs', 'liblinear']

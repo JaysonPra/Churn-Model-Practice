@@ -1,0 +1,35 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Environments
+.venv/
+venv/
+env/
+*pyc
+.vscode/
+
+# Data Files
+*.csv
+*.parquet
+*.json
+*.zip
+*.tar.gz
+.DS_Store
+
+# Model Saves
+*.pkl
+*.h5
+*.joblib
+*.onnx
+mlruns/
+mlruns.db
+mlflow.db
+
+# Secrets
+.env
+.ipynb_checkpoints

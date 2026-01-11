@@ -1,0 +1,19 @@
+experiment:
+  name: "Churn_Prediction"
+  run_name: "RandomForest_Added_v1"
+  tags:
+    model_type: "RandomForest"
+    feature_set: "baseline_numeric_categorical"
+  
+cv_settings:
+  n_splits: 5
+  random_state: 42
+  
+hyperparameters:
+  - classifier: ["logistic_regression"]
+    classifier__C: [0.01, 0.1, 1, 10, 100]
+    classifier__solver: ['lbfgs', 'liblinear']
+  - classifier: ["random_forest"]
+    classifier__n_estimators: [100, 200]
+    classifier__max_depth: [5, 10]
+  
