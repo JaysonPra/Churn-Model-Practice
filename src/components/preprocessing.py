@@ -38,6 +38,8 @@ def _FeatureCreation(df):
     df['TotalServices'] = (df[service_cols] == 'Yes').sum(axis=1)
     df['TotalServices'] = df['TotalServices'].astype('Int8')
 
+    df['Monthly_Per_Service'] = df['MonthlyCharges'] / (df['TotalServices'] + 1).astype('Int16')
+
     return df
 
 def main():
