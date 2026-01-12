@@ -1,8 +1,8 @@
-from config import RAW_DATA_PATH, PROCESSED_DATA_PATH
+from src.config import RAW_DATA_PATH, PROCESSED_DATA_PATH
 import pandas as pd
 
 def _optimizeDataType(df):
-    convert_to_category = ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'DeviceProtection', 'OnlineBackup', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'Churn']
+    convert_to_category = ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'DeviceProtection', 'OnlineBackup', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod']
     df['TotalCharges'] = df['TotalCharges'].replace({" ": 0})
 
     for col in convert_to_category:
@@ -12,7 +12,8 @@ def _optimizeDataType(df):
     df['MonthlyCharges'] = df['MonthlyCharges'].astype('float32')
     df['TotalCharges'] = df['TotalCharges'].astype('float32')
 
-    df['Churn'] = df['Churn'].map({'No': 0, 'Yes': 1}).astype('int8')
+    if 'Churn' in df.columns:
+        df['Churn'] = df['Churn'].map({'No': 0, 'Yes': 1}).astype('int8')
 
     return df
 
@@ -38,7 +39,17 @@ def _FeatureCreation(df):
     df['TotalServices'] = (df[service_cols] == 'Yes').sum(axis=1)
     df['TotalServices'] = df['TotalServices'].astype('Int32')
 
-    df['Monthly_Per_Service'] = df['MonthlyCharges'] / (df['TotalServices'] + 1).astype('Int32')
+    df['Monthly_Per_Service'] = df['MonthlyCharges'] / (df['TotalServices'] + 1).astype('float32')
+
+    return df
+
+def preprocess_data(df:pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+
+    df = _BinaryEncoding(df)
+    df = _MultiClassCategoricals(df)
+    df = _optimizeDataType(df)
+    df = _FeatureCreation(df)
 
     return df
 
