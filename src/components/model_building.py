@@ -13,8 +13,8 @@ def build_model(param_grid, skf, config_file_name):
         param_grid=param_grid,
         cv=skf,
         scoring='f1',
-        n_jobs=1,
-        verbose=3,
+        n_jobs=-1,
+        verbose=1,
     )
 
     grid.fit(X,y)
