@@ -1,0 +1,32 @@
+experiment:
+  name: "Churn_Prediction"
+  run_name: "svm_added_v1"
+  tags:
+    model_type: "SVM"
+    feature_set: "baseline_numeric_categorical"
+
+preprocessor:
+  ignore_features: ['Partner', 'gender', 'MultipleLines', 'MonthlyCharges', 'StreamingMovies', 'StreamingTV']
+
+cv_settings:
+  n_splits: 5
+  random_state: 42
+  
+hyperparameters:
+  - classifier: ["logistic_regression"]
+    classifier__C: [0.1, 1, 5, 10]
+    classifier__solver: ['lbfgs', 'liblinear']
+    classifier__penalty: ['l1', 'l2']
+  - classifier: ["random_forest"]
+    classifier__n_estimators: [100, 200, 300, 400]
+    classifier__max_depth: [12, 14, 16]
+  - classifier: ["xgboost"]
+    classifier__n_estimators: [100, 200, 300, 400, 500]
+    classifier__learning_rate: [0.05, 0.1, 0.2]
+    classifier__max_depth:: [3, 4, 5]
+    classifier__min_child_weight: [1, 5, 10]
+  - classifier: ["svm"]
+    classifier__C: [0.1, 1, 10, 100]
+    classifier__gamma: ['scale', 'auto', 0.01, 0.1]
+    classifier__kernel: ['rbf']
+  
