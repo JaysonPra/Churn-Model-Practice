@@ -11,11 +11,13 @@ from config import MODEL_DIR, EXP_CONFIG_DIR, PROCESSED_DATA_PATH
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from xgboost import XGBClassifier
+from sklearn.svm import SVC
 
 MODEL_MAP = {
     "logistic_regression": LogisticRegression(),
     "random_forest": RandomForestClassifier(),
-    "xgboost": XGBClassifier(use_label_encoder=False, eval_metric='logloss')
+    "xgboost": XGBClassifier(use_label_encoder=False, eval_metric='logloss'),
+    "svm": SVC(probability=True)
 }
 
 def start_experiment(config_file_name):
