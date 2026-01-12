@@ -26,6 +26,7 @@ class CustomerData(BaseModel):
     PaymentMethod: Literal["Electronic check", "Mailed check", "Bank Transfer (automatic)", "Credit card (automatic)"]
 
     model_config = {
+        "extra": "ignore",
         "json_schema_extra": {
             "example": {
                 "tenure": 12,
