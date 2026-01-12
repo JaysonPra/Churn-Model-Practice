@@ -8,7 +8,7 @@ def _optimizeDataType(df):
     for col in convert_to_category:
         df[col] = df[col].astype('category')
     
-    df['tenure'] = df['tenure'].astype('int8')
+    df['tenure'] = df['tenure'].astype('int32')
     df['MonthlyCharges'] = df['MonthlyCharges'].astype('float32')
     df['TotalCharges'] = df['TotalCharges'].astype('float32')
 
@@ -36,9 +36,9 @@ def _FeatureCreation(df):
     service_cols = ['PhoneService', 'MultipleLines', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies']
 
     df['TotalServices'] = (df[service_cols] == 'Yes').sum(axis=1)
-    df['TotalServices'] = df['TotalServices'].astype('Int8')
+    df['TotalServices'] = df['TotalServices'].astype('Int32')
 
-    df['Monthly_Per_Service'] = df['MonthlyCharges'] / (df['TotalServices'] + 1).astype('Int16')
+    df['Monthly_Per_Service'] = df['MonthlyCharges'] / (df['TotalServices'] + 1).astype('Int32')
 
     return df
 
