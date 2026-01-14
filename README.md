@@ -53,6 +53,7 @@ A full-stack ML pipeline to predict customer churn using Telco Dataset from Kagg
 - Model Tuning: Learned how to tune the model using GridSearch, and feature engineering.
 
 ## Folder Structure
+```
 ├── config/             # Experimentation configs   
 ├── data/               # Raw and processed CSVs
 ├── docker/             # Dockerfile
@@ -65,3 +66,4 @@ A full-stack ML pipeline to predict customer churn using Telco Dataset from Kagg
 │   └── config.py       # Path and Environment management
 ├── mlflow.db           # SQLite Metadata Store
 └── requirements.txt    # Frozen dependencies
+```
