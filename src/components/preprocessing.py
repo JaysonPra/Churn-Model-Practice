@@ -62,5 +62,3 @@ def main():
     df = _FeatureCreation(df)
     
     df.to_parquet(path=PROCESSED_DATA_PATH, index=True)
-    
-main()
