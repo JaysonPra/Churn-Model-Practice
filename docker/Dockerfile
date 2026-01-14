@@ -11,6 +11,7 @@ COPY mlruns/ ./mlruns/
 
 ENV PYTHONPATH=/app
 ENV MLFLOW_TRACKING_URI=sqlite:////app/mlflow.db
+ENV PROJECT_ROOT=/app
 
 EXPOSE 8000
 
