@@ -4,8 +4,6 @@ A full-stack ML pipeline to predict customer churn using Telco Dataset from Kagg
 
 **Core Architecture:** FastAPI, MLflow, Scikit-Learn, Pandas, Docker
 
----
-
 ## System Architecture
 
 * **Data Pipeline:** Modular preprocessing with Pandas.
@@ -13,7 +11,6 @@ A full-stack ML pipeline to predict customer churn using Telco Dataset from Kagg
 * **Model Registry:** Using Model Aliases (`@champion`) to decouple model training from the production API.
 * **Deployment:** Containerized environment for loading the champion model and running the API.
 
----
 
 ## Tech Stack
 
@@ -24,8 +21,6 @@ A full-stack ML pipeline to predict customer churn using Telco Dataset from Kagg
 * **Experimentation:** MLflow
 * **Containerization:** Docker
 * **Serialization:** MLflow / Joblib
-
----
 
 ## Setup & Installation
 
@@ -44,8 +39,6 @@ A full-stack ML pipeline to predict customer churn using Telco Dataset from Kagg
     ```
 3.  **Access the API:**
     Open `http://localhost:8000/docs` in your browser.
-
----
 
 ## API Usage
 
